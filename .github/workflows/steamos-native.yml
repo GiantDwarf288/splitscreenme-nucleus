@@ -1,0 +1,31 @@
+name: SteamOS native launcher checks
+
+on:
+  push:
+    paths:
+      - 'steamdeck/**'
+      - '.github/workflows/steamos-native.yml'
+  pull_request:
+    paths:
+      - 'steamdeck/**'
+      - '.github/workflows/steamos-native.yml'
+  workflow_dispatch:
+
+jobs:
+  linux-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            steamdeck
+      - name: Syntax-check Python
+        run: python3 -m compileall -q steamdeck
+      - name: Check Bash syntax
+        run: bash -n steamdeck/install.sh
+      - name: Run release integrity and archive safety tests
+        run: python3 -m unittest discover -s steamdeck/tests -v
+      - name: Check command-line help
+        run: python3 steamdeck/nucleus_deck.py --help
