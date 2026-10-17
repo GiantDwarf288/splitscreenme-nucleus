@@ -14,6 +14,19 @@ This is a **Linux-native** entry point for the Nucleus Co-op fork, **not** the o
 - SteamOS-bundled **gamescope**, **bubblewrap**, Python 3 and KDE **kdialog**.
 - PartyDeck and, for Windows games, a configured Proton/UMU runtime. PartyDeck can download additional runtime dependencies separately.
 
+## Download a prepackaged launcher
+
+Instead of checking out the source, download the **nucleus-deck-steamos** artifact from the newest successful [SteamOS native launcher checks workflow](https://github.com/GiantDwarf288/splitscreenme-nucleus/actions/workflows/steamos-native.yml) on this branch (GitHub sign-in may be required). Unzip the GitHub artifact to obtain `nucleus-deck-steamos.tar.gz`, then in Konsole:
+
+```bash
+cd ~/Downloads
+tar -xzf nucleus-deck-steamos.tar.gz
+bash nucleus-deck/install.sh
+~/.local/bin/nucleus-deck --doctor
+```
+
+This small artifact contains the **native launcher only**. The first-time **Install/update SteamOS runtime** action downloads the official PartyDeck SteamOS runtime separately.
+
 ## Install into your home directory (no sudo / Windows)
 
 In Steam Deck Desktop Mode, open Konsole:
