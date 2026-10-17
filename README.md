@@ -12,6 +12,9 @@
       </br>
 </div>
 
+
+> **Steam Deck / SteamOS (experimental):** This fork now has a separate [Linux-native Deck companion](steamdeck/README.md) backed by PartyDeck. It doesn't run the Windows Nucleus application or support Windows Nucleus handlers; see the two-player World at War Zombies instructions and current limitations.
+
 # What is Nucleus Co-op?
 
 Nucleus Co-op is a free and open source tool for Windows that allows split-screen play on many games that do not initially support it, the app purpose is to make it as easy as possible for the average user to play games locally using only one PC and one game copy. 
