@@ -29,3 +29,14 @@ jobs:
         run: python3 -m unittest discover -s steamdeck/tests -v
       - name: Check command-line help
         run: python3 steamdeck/nucleus_deck.py --help
+      - name: Package SteamOS launcher
+        run: |
+          mkdir -p dist/nucleus-deck
+          cp steamdeck/install.sh steamdeck/nucleus_deck.py steamdeck/README.md dist/nucleus-deck/
+          tar -czf dist/nucleus-deck-steamos.tar.gz -C dist nucleus-deck
+      - name: Upload installable SteamOS bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: nucleus-deck-steamos
+          path: dist/nucleus-deck-steamos.tar.gz
+          if-no-files-found: error
